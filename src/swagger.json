@@ -1,0 +1,53 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Email trigger Documentation",
+        "description": "This is an automatic email sending api",
+        "version": "1.0.0",
+        "contact": {
+            "email": "gabrieldiasgama@hotmail.com"
+        }
+    },
+    "paths": {
+        "/send-email": {
+            "post": {
+                "tags": ["Sending"],
+                "summary": "Create a sending of email",
+                "description": "Creates an automatic email send",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "recipient": {
+                                        "type": "string"
+                                    },
+                                    "title": {
+                                        "type": "string"
+                                    },
+                                    "body": {
+                                        "type": "string"
+                                    }
+                                },
+                                "example": {
+                                    "recipient": "jhondoe@example.com",
+                                    "title": "Hello World!",
+                                    "body": "This is my first Hello World =D"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    },
+                    "500": {
+                        "description": "It was not possible to send the email"
+                    }
+                }
+            }
+        }
+    }
+}

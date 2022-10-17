@@ -1,10 +1,15 @@
 import express from "express"
 import * as nodemailer from "nodemailer";
+import swaggerUi from "swagger-ui-express"
+
+import swaggerFile from "./swagger.json"
 
 const app = express();
-  app.use(express.json());
+app.use(express.json());
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerFile))
 
 async function sendMail(message:{}) {
+
   let transporter = await nodemailer.createTransport({
     host: "smtp.titan.email",
     port: 587,
@@ -26,11 +31,11 @@ async function sendMail(message:{}) {
       html: req.body.body
     };
     
-     await sendMail(onMessage);
-    console.log(req.body);
-    res.json();
+    await sendMail(onMessage);
+      console.log(req.body);
+      res.json();
   })
 
-  app.listen(process.env.PORT || 3000, () => {
+  app.listen(process.env.PORT || 3330, () => {
     console.log('Server is running');
   });

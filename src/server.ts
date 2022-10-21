@@ -26,7 +26,7 @@ async function sendMail(message:{}) {
 
   app.post("/send-email", async (req, res) => {
     let onMessage = {
-      from: "naoresponder@inthegrath.com.br",
+      from: "Inthegra <naoresponder@inthegrath.com.br>",
       to: req.body.recipient,
       subject: req.body.title,
       text: req.body.body,

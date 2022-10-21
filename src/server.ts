@@ -13,9 +13,9 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 async function sendMail(message:{}) {
 
   let transporter = await nodemailer.createTransport({
-    host: "smtp-relay.gmail.com",
-    port: 587,
-    secure: false, 
+    host: "smtp.gmail.com",
+    port: 465,
+    secure: true, 
     auth: {
       user: "naoresponder@inthegrath.com.br", 
       pass: "NAORESPONDER2022@@", 

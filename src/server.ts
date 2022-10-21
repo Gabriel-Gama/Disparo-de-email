@@ -1,22 +1,24 @@
 import express from "express"
 import * as nodemailer from "nodemailer";
-import swaggerUi from "swagger-ui-express"
 
+
+import swaggerUi from "swagger-ui-express"
 import swaggerFile from "./swagger.json"
 
 const app = express();
 app.use(express.json());
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerFile))
+
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 async function sendMail(message:{}) {
 
   let transporter = await nodemailer.createTransport({
-    host: "smtp.titan.email",
+    host: "smtp-relay.gmail.com",
     port: 587,
     secure: false, 
     auth: {
-      user: "test@zify.com.br", 
-      pass: "Teste123", 
+      user: "naoresponder@inthegrath.com.br", 
+      pass: "NAORESPONDER2022@@", 
     },
   });
   await transporter.sendMail(message); 
@@ -24,7 +26,7 @@ async function sendMail(message:{}) {
 
   app.post("/send-email", async (req, res) => {
     let onMessage = {
-      from: "test@zify.com.br",
+      from: "naoresponder@inthegrath.com.br",
       to: req.body.recipient,
       subject: req.body.title,
       text: req.body.body,

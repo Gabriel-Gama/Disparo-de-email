@@ -42,9 +42,6 @@
                 "responses": {
                     "201": {
                         "description": "Created"
-                    },
-                    "500": {
-                        "description": "It was not possible to send the email"
                     }
                 }
             }
